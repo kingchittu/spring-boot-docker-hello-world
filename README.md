@@ -6,7 +6,7 @@ For creating Docker Image, run below command,
 2. mvn fabric8:build
 
 To run the image in a Docker container,
-1. Run the image using below command,
+1. Run the image using below command, \n
 $ docker run -p 8085:8085 spring-boot-docker-hello-world:0.0.1-SNAPSHOT.dev
 
 
