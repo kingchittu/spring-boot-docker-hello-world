@@ -4,6 +4,7 @@ Demo project for creating Docker Image of Spring Boot application
 For creating Docker Image, run below command,
 1. mvn clean install
 2. mvn fabric8:build
+For fabric8 reference: https://fabric8.io/guide/mavenDockerBuild.html
 
 To run the image in a Docker container,
 1. Run the image using below command,\
