@@ -1,5 +1,5 @@
 # spring-boot-docker-hello-world
-Demo project for creating Docker Image of Spring Boot application
+Demo project for creating Docker Image of Spring Boot application. \
 More details: https://javabypatel.blogspot.com/2020/10/create-docker-image-of-spring-boot-microservice-using-fabric8-maven-plugin.html
 
 For creating Docker Image, run below command,
