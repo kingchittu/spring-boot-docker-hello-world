@@ -4,14 +4,16 @@ FROM maven:alpine
 # image layer
 WORKDIR /app
 ADD pom.xml /app
-RUN mvn verify clean --fail-never
+# RUN mvn verify clean --fail-never
+RUN mvn clean package
 
 # Image layer: with the application
 COPY . /app
 RUN mvn -v
-RUN mvn clean install -DskipTests
+# RUN mvn clean install -DskipTests
+RUN mvn clean package
 EXPOSE 8080
-ADD ./target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
+ADD /target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","/developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar"]
 
 
