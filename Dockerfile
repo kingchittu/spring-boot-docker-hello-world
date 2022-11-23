@@ -1,18 +1,34 @@
+FROM java:8
+FROM maven:alpine
+
+# image layer
 WORKDIR /app
-# Build stage
-FROM maven:3.6.0-jdk-11-slim AS build
+ADD pom.xml /app
+RUN mvn verify clean --fail-never
+
+# Image layer: with the application
+COPY . /app
+RUN mvn -v
+RUN mvn clean install -DskipTests
+EXPOSE 8080
+ADD ./target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /developments/
+ENTRYPOINT ["java","-jar","/developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar"]
 
 
-COPY pom.xml /app/pom.xml
 
-RUN mvn -f /app/pom.xml clean package
+# WORKDIR /app
 
+# # copy pom.xml from context into image
+# COPY pom.xml /app/pom.xml
+
+# # run from /app directory which now contains a pom.xml, should work
 # RUN mvn clean package
 
-FROM adoptopenjdk/openjdk11-openj9:alpine
+# # RUN mvn clean package
+
+# FROM adoptopenjdk/openjdk11-openj9:alpine
 
 
-
-ADD /app/target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
-EXPOSE 8085
-ENTRYPOINT java -jar spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
+# ADD /app/target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
+# EXPOSE 8085
+# ENTRYPOINT java -jar spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
