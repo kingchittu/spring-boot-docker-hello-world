@@ -1,4 +1,4 @@
 FROM adoptopenjdk/openjdk11-openj9:alpine
-ADD target/${project.build.finalName}.jar /myapp/${project.build.finalName}.jar
+ADD target/SpringBootDockerHelloWorld.jar /myapp/SpringBootDockerHelloWorld.jar
 EXPOSE 8085
-ENTRYPOINT java -jar /myapp/${project.build.finalName}.jar
+ENTRYPOINT java -jar /myapp/SpringBootDockerHelloWorld.jar
