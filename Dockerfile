@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11-openj9:alpine
 RUN pwd && ls
-ADD src/main/target/SpringBootDockerHelloWorld.jar SpringBootDockerHelloWorld.jar
+ADD target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
 EXPOSE 8085
-ENTRYPOINT java -jar ./SpringBootDockerHelloWorld.jar
+ENTRYPOINT java -jar ./spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
