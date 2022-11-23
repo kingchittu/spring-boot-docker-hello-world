@@ -1,10 +1,10 @@
 WORKDIR /app
 
 # # copy pom.xml from context into image
-# COPY pom.xml /app/pom.xml
+COPY pom.xml /app/pom.xml
 
 # # run from /app directory which now contains a pom.xml, should work
-# RUN mvn clean package
+RUN mvn clean package
 
 FROM adoptopenjdk/openjdk11-openj9:alpine
 
