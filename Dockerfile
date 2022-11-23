@@ -1,4 +1,4 @@
-FROM java:8
+FROM adoptopenjdk/openjdk11-openj9:alpine
 FROM maven:alpine
 
 # image layer
@@ -11,7 +11,7 @@ COPY . /app
 RUN mvn -v
 RUN mvn clean install -DskipTests
 EXPOSE 8080
-ADD ./target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /developments/
+ADD ./target/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar /developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","/developments/spring-boot-docker-hello-world-0.0.1-SNAPSHOT.jar"]
 
 
