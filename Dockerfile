@@ -1,6 +1,10 @@
-FROM adoptopenjdk/openjdk11-openj9:alpine
+# Build stage
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY pom.xml /app/
+RUN mvn -f /app/pom.xml clean package
 
-WORKDIR /app
+
+FROM adoptopenjdk/openjdk11-openj9:alpine
 
 # # copy pom.xml from context into image
 COPY pom.xml /app/pom.xml
