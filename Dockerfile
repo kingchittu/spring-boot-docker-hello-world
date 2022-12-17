@@ -8,8 +8,8 @@ ADD pom.xml /app
 RUN mvn clean package
 
 # Image layer: with the application
-COPY . /app
-RUN mvn -v
+# COPY . /app
+# RUN mvn -v
 # RUN mvn clean install -DskipTests
 # RUN mvn clean package
 # EXPOSE 8080
