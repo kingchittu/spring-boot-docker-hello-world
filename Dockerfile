@@ -2,10 +2,10 @@ FROM adoptopenjdk/openjdk11-openj9:alpine
 FROM maven:alpine
 
 # image layer
-WORKDIR /app
-ADD pom.xml /app
-# RUN mvn verify clean --fail-never
-RUN mvn clean package
+# WORKDIR /app
+# ADD pom.xml /app
+# # RUN mvn verify clean --fail-never
+# RUN mvn clean package
 
 # Image layer: with the application
 # COPY . /app
